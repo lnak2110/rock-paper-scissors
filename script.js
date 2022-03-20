@@ -1,12 +1,16 @@
 let computerSelection;
+let playerSelection;
+
 function computerPlay() {
     let x = Math.floor(Math.random() * 3) + 1;
     if (x === 1) {
-        computerSelection = "Rock";
+        return "Rock";
     } else if (x === 2) {
-        computerSelection = "Paper";
+        return "Paper";
     } else
-        computerSelection = "Scissors";
-    return computerSelection;
+        return "Scissors";
 }
 
+function play(computerSelection, playerSelection) {
+
+}
