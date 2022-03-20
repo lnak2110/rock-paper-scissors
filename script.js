@@ -12,14 +12,15 @@ function computerPlay() {
 }
 
 function playRound(computerSelection, playerSelection) {
-    let playerS = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
-    if (computerSelection === playerSelection) {
+    let playerS = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+    if (computerSelection === playerS) {
         return "This is a draw match.";
     } else if ((computerSelection === "Rock" && playerS === "Paper") || 
                (computerSelection === "Paper" && playerS === "Scissors") || 
                (computerSelection === "Scissors" && playerS === "Rock")) {
         return `You win! ${playerS} beat(s) ${computerSelection}.`;
     } else {
-        return `You lose! ${playerS} lose(S) to ${computerSelection}.`;
+        return `You lose! ${playerS} lose(s) to ${computerSelection}.`;
     }
 }
+
