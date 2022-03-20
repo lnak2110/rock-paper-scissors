@@ -11,6 +11,6 @@ function computerPlay() {
         return "Scissors";
 }
 
-function play(computerSelection, playerSelection) {
+function playRound(computerSelection, playerSelection) {
 
 }
