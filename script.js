@@ -1,5 +1,5 @@
-let computerSelection;
-let playerSelection;
+const computerSelection = computerPlay();
+const playerSelection = "Rock";
 
 function computerPlay() {
     let x = Math.floor(Math.random() * 3) + 1;
