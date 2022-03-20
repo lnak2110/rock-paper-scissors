@@ -10,4 +10,3 @@ function computerPlay() {
     return computerSelection;
 }
 
-console.log(computerPlay());
