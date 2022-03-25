@@ -12,6 +12,7 @@ function computerPlay() {
 }
 
 function playRound(computerSelection, playerSelection) {
+    playerSelection = prompt("What do you choose between Rock / Paper / Scissors?");
     let playerS = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
     if (computerSelection === playerS) {
         return "This is a draw match.";
@@ -25,5 +26,15 @@ function playRound(computerSelection, playerSelection) {
 }
 
 function game() {
-    
+    let computerScore = 0;
+    let playerScore = 0;
+    let roundResult;
+    for (let i = 0; i < 5; i++) {
+        roundResult = playRound();
+        if (roundResult === 1) {
+            computerScore++;
+        } else if (roundResult === 2) {
+            playerScore++;
+        }
+    }
 }
