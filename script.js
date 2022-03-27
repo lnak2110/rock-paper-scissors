@@ -5,6 +5,10 @@ const result = document.createElement('div');
 const message = document.createElement('p');
 const score = document.createElement('div');
 
+result.classList.add('result');
+message.classList.add('message');
+score.classList.add('score');
+
 result.appendChild(message);
 result.appendChild(score);
 headerContainer.appendChild(result);
