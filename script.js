@@ -28,12 +28,18 @@ function computerPlay() {
         return "Scissors";
 }
 
-const psButtons = document.querySelectorAll('#ps-button input');
+const psButtons = document.querySelectorAll('#choose');
 psButtons.forEach((psButton) => {
     psButton.addEventListener('click', () => {
         playRound(computerPlay(), psButton.value);
     });
 });
+
+function disableButtons() {
+    psButtons.forEach(psButton => {
+        psButton.disabled = true;
+    });
+}
 
 function playRound(computerSelection, playerSelection) {
     // "What do you choose between Rock / Paper / Scissors?"
@@ -56,14 +62,20 @@ function playRound(computerSelection, playerSelection) {
         // roundResult = 0;
         // roundResultMessage = `You lose! ${playerSelection} lose(s) to ${computerSelection}.`;
         computerScore++;
-        message.textContent= `You lose this round! ${playerSelection} < ${computerSelection}.`;
+        message.textContent = `You lose this round! ${playerSelection} < ${computerSelection}.`;
         score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     }
     // return [roundResult, roundResultMessage];
-    if (computerScore == 5) {
-        
+    if (computerScore === 5) {
+        message.textContent = "Oh no! You lose the game...";
+        disableButtons();
+    } else if (playerScore === 5) {
+        message.textContent = "Congratulations! You win the game!";
+        disableButtons();
     }
 }
+
+
 
 // function game() {
 //     let computerScore = 0;
