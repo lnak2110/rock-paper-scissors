@@ -42,7 +42,7 @@ function playRound(computerSelection, playerSelection) {
     if (computerSelection === playerSelection) {
         // roundResult = 1;
         // roundResultMessage = "This is a draw match.";
-        message.textContent = "This is a draw match.";
+        message.textContent = "This is a draw round.";
         score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     } else if ((computerSelection === "Rock" && playerSelection === "Paper") || 
                (computerSelection === "Paper" && playerSelection === "Scissors") || 
@@ -50,16 +50,19 @@ function playRound(computerSelection, playerSelection) {
         // roundResult = 2;
         // roundResultMessage = `You win! ${playerSelection} beat(s) ${computerSelection}.`;
         playerScore++;
-        message.textContent = `You win! ${playerSelection} beat(s) ${computerSelection}.`;
+        message.textContent = `You win this round! ${playerSelection} > ${computerSelection}.`;
         score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     } else {
         // roundResult = 0;
         // roundResultMessage = `You lose! ${playerSelection} lose(s) to ${computerSelection}.`;
         computerScore++;
-        message.textContent= `You lose! ${playerSelection} lose(s) to ${computerSelection}.`;
+        message.textContent= `You lose this round! ${playerSelection} < ${computerSelection}.`;
         score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     }
     // return [roundResult, roundResultMessage];
+    if (computerScore == 5) {
+        
+    }
 }
 
 // function game() {
