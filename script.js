@@ -1,3 +1,4 @@
+// Initialising scores
 let computerScore = 0;
 let playerScore = 0;
 
@@ -19,7 +20,7 @@ result.appendChild(message);
 result.appendChild(score);
 headerContainer.appendChild(result);
 
-// Initialising score
+// Display initial scores
 score.textContent = `Computer ${computerScore} : ${playerScore} You`;
 
 // Computer random selection
@@ -64,6 +65,7 @@ function playRound(computerSelection, playerSelection) {
         message.textContent = `You lose this round! ${playerSelection} < ${computerSelection}.`;
         score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     }
+
     if (computerScore === 5) {          // Compute wins
         message.textContent = "Oh no! You lose the game...";
         disableButtons();
