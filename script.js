@@ -11,9 +11,11 @@ function computerPlay() {
         return "Scissors";
 }
 
+const rock = document.querySelector('#rock');
+rock.addEventListener('click', playRound()) 
+
 function playRound(computerSelection, playerSelection) {
-    playerSelection = prompt("What do you choose between Rock / Paper / Scissors?");
-    let playerS = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1).toLowerCase();
+    // "What do you choose between Rock / Paper / Scissors?"
     let roundResult,
         roundResultMessage;
     if (computerSelection === playerS) {
