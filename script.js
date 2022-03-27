@@ -12,23 +12,27 @@ function computerPlay() {
 }
 
 const rock = document.querySelector('#rock');
-rock.addEventListener('click', playRound()) 
+rock.addEventListener('click', playRound(computerSelection, "Rock")); 
+const paper = document.querySelector('#paper');
+paper.addEventListener('click', playRound(computerSelection, "Paper"));
+const scissors = document.querySelector('#scissors');
+scissors.addEventListener('click', playRound(computerSelection, "scissors"));
 
 function playRound(computerSelection, playerSelection) {
     // "What do you choose between Rock / Paper / Scissors?"
     let roundResult,
         roundResultMessage;
-    if (computerSelection === playerS) {
+    if (computerSelection === playerSelection) {
         roundResult = 1;
         roundResultMessage = "This is a draw match.";
-    } else if ((computerSelection === "Rock" && playerS === "Paper") || 
-               (computerSelection === "Paper" && playerS === "Scissors") || 
-               (computerSelection === "Scissors" && playerS === "Rock")) {
+    } else if ((computerSelection === "Rock" && playerSelection === "Paper") || 
+               (computerSelection === "Paper" && playerSelection === "Scissors") || 
+               (computerSelection === "Scissors" && playerSelection === "Rock")) {
         roundResult = 2;
-        roundResultMessage = `You win! ${playerS} beat(s) ${computerSelection}.`;
+        roundResultMessage = `You win! ${playerSelection} beat(s) ${computerSelection}.`;
     } else {
         roundResult = 0;
-        roundResultMessage = `You lose! ${playerS} lose(s) to ${computerSelection}.`;
+        roundResultMessage = `You lose! ${playerSelection} lose(s) to ${computerSelection}.`;
     }
     return [roundResult, roundResultMessage];
 }
