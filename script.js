@@ -1,5 +1,8 @@
 // let computerSelection;
 // let playerSelection;
+let computerScore = 0;
+let playerScore = 0;
+
 const headerContainer = document.querySelector('#header-container');
 const result = document.createElement('div');
 const message = document.createElement('p');
@@ -12,6 +15,8 @@ score.classList.add('score');
 result.appendChild(message);
 result.appendChild(score);
 headerContainer.appendChild(result);
+
+score.textContent = `Computer ${computerScore} : ${playerScore} You`;
 
 function computerPlay() {
     let x = Math.floor(Math.random() * 3) + 1;
@@ -37,17 +42,24 @@ function playRound(computerSelection, playerSelection) {
     if (computerSelection === playerSelection) {
         // roundResult = 1;
         // roundResultMessage = "This is a draw match.";
+        message.textContent = "This is a draw match.";
+        score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     } else if ((computerSelection === "Rock" && playerSelection === "Paper") || 
                (computerSelection === "Paper" && playerSelection === "Scissors") || 
                (computerSelection === "Scissors" && playerSelection === "Rock")) {
-        roundResult = 2;
-        roundResultMessage = `You win! ${playerSelection} beat(s) ${computerSelection}.`;
+        // roundResult = 2;
+        // roundResultMessage = `You win! ${playerSelection} beat(s) ${computerSelection}.`;
+        playerScore++;
+        message.textContent = `You win! ${playerSelection} beat(s) ${computerSelection}.`;
+        score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     } else {
-        roundResult = 0;
-        roundResultMessage = `You lose! ${playerSelection} lose(s) to ${computerSelection}.`;
+        // roundResult = 0;
+        // roundResultMessage = `You lose! ${playerSelection} lose(s) to ${computerSelection}.`;
+        computerScore++;
+        message.textContent= `You lose! ${playerSelection} lose(s) to ${computerSelection}.`;
+        score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     }
     // return [roundResult, roundResultMessage];
-    console.log(roundResultMessage);
 }
 
 // function game() {
