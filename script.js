@@ -1,23 +1,28 @@
-// let computerSelection;
-// let playerSelection;
 let computerScore = 0;
 let playerScore = 0;
 
+// Select the header div
 const headerContainer = document.querySelector('#header-container');
+
+// Create a div to display result (message and score are inside result)
 const result = document.createElement('div');
 const message = document.createElement('p');
 const score = document.createElement('div');
 
+// Add classes to result elements
 result.classList.add('result');
 message.classList.add('message');
 score.classList.add('score');
 
+// Append elements to the header div
 result.appendChild(message);
 result.appendChild(score);
 headerContainer.appendChild(result);
 
+// Initialising score
 score.textContent = `Computer ${computerScore} : ${playerScore} You`;
 
+// Computer random selection
 function computerPlay() {
     let x = Math.floor(Math.random() * 3) + 1;
     if (x === 1) {
@@ -28,80 +33,42 @@ function computerPlay() {
         return "Scissors";
 }
 
+// Enable the buttons
 const psButtons = document.querySelectorAll('#choose');
 psButtons.forEach((psButton) => {
     psButton.addEventListener('click', () => {
-        playRound(computerPlay(), psButton.value);
+        playRound(computerPlay(), psButton.value); // value Rock / Paper / Scissors
     });
 });
 
+// Fuction disable when done
 function disableButtons() {
     psButtons.forEach(psButton => {
         psButton.disabled = true;
     });
 }
 
+// Fuction to play each round
 function playRound(computerSelection, playerSelection) {
-    // "What do you choose between Rock / Paper / Scissors?"
-    // let roundResult,
-    //     roundResultMessage;
     if (computerSelection === playerSelection) {
-        // roundResult = 1;
-        // roundResultMessage = "This is a draw match.";
         message.textContent = "This is a draw round.";
         score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     } else if ((computerSelection === "Rock" && playerSelection === "Paper") || 
                (computerSelection === "Paper" && playerSelection === "Scissors") || 
                (computerSelection === "Scissors" && playerSelection === "Rock")) {
-        // roundResult = 2;
-        // roundResultMessage = `You win! ${playerSelection} beat(s) ${computerSelection}.`;
         playerScore++;
         message.textContent = `You win this round! ${playerSelection} > ${computerSelection}.`;
         score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     } else {
-        // roundResult = 0;
-        // roundResultMessage = `You lose! ${playerSelection} lose(s) to ${computerSelection}.`;
         computerScore++;
         message.textContent = `You lose this round! ${playerSelection} < ${computerSelection}.`;
         score.textContent = `Computer ${computerScore} : ${playerScore} You`;
     }
-    // return [roundResult, roundResultMessage];
-    if (computerScore === 5) {
+    if (computerScore === 5) {          // Compute wins
         message.textContent = "Oh no! You lose the game...";
         disableButtons();
-    } else if (playerScore === 5) {
+    } else if (playerScore === 5) {     // Player wins
         message.textContent = "Congratulations! You win the game!";
         disableButtons();
     }
 }
-
-
-
-// function game() {
-//     let computerScore = 0;
-//     let playerScore = 0;
-//     let result1;
-//     for (let i = 0; i < 5; i++) {
-//         result1 = playRound;
-//         const roundResult = result1[0],
-//               roundResultMessage = result1[1];
-//         if (roundResult === 0) {
-//             computerScore++;
-//             console.log(roundResultMessage);
-//         } else if (roundResult === 2) {
-//             playerScore++;
-//             console.log(roundResultMessage);
-//         } else {
-//             console.log(roundResultMessage);
-//         }
-//     }
-//     if (computerScore < playerScore) {
-//         console.log(`Final score: Computer ${computerScore} : ${playerScore} You\nCongratulation! You win the game!`);
-//     } else if (computerScore > playerScore) {
-//         console.log(`Final score: Computer ${computerScore} : ${playerScore} You\nOh no! You lose...`);
-//     } else {
-//         console.log(`Final score: Computer ${computerScore} : ${playerScore} You\nThe game ended in a draw.`);
-//     }
-// }
-
-// game();
